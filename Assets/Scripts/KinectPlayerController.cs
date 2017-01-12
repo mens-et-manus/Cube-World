@@ -4,11 +4,9 @@ using UnityEngine.UI;
 
 public class KinectPlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
     private FollowJoint followJoint; // Kinect Script
     
     void Start() {
-        rb = GetComponent<Rigidbody>();
 		// get Kinect scripts
         followJoint = GetComponent<FollowJoint>();
     }
