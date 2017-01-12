@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube-World.Plugins", "Cube-World.Plugins.csproj", "{A02077E0-16D9-E146-E77D-E24BF3EF5254}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube-World", "Cube-World.csproj", "{A43309EA-6DE3-388B-64C1-8B5881A4F640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube-World.Editor.Plugins", "Cube-World.Editor.Plugins.csproj", "{DEAD85AF-697C-288F-9660-A651ED998ABD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A02077E0-16D9-E146-E77D-E24BF3EF5254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02077E0-16D9-E146-E77D-E24BF3EF5254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02077E0-16D9-E146-E77D-E24BF3EF5254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02077E0-16D9-E146-E77D-E24BF3EF5254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A43309EA-6DE3-388B-64C1-8B5881A4F640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43309EA-6DE3-388B-64C1-8B5881A4F640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43309EA-6DE3-388B-64C1-8B5881A4F640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43309EA-6DE3-388B-64C1-8B5881A4F640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEAD85AF-697C-288F-9660-A651ED998ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAD85AF-697C-288F-9660-A651ED998ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAD85AF-697C-288F-9660-A651ED998ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAD85AF-697C-288F-9660-A651ED998ABD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
