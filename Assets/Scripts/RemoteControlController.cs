@@ -2,44 +2,32 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class KinectPlayerController : MonoBehaviour
+public class RemoteControlController : MonoBehaviour
 {
 	public GameObject cube;
+	public GameObject player;
 
-	private Rigidbody rb;
-	private FollowJoint followJoint; // Kinect Script
+	private GameObject selectedCube;
 
-	void Start()
-	{
-		rb = GetComponent<Rigidbody>();
-		// get Kinect scripts
-		followJoint = GetComponent<FollowJoint>();
+
+	void Start() {
+		selectedCube = player.GetComponent<PlayerController>().selectedCube;
 	}
 
 	void FixedUpdate()
 	{	// before phy calculation
 
-		// read position from Right hand
-		transform.position = followJoint.ReadPosition;
+		selectedCube = player.GetComponent<PlayerController>().selectedCube;
 
-		if (Input.GetKeyDown(KeyCode.P)){
-			// create a new cube with "P" pressed
-			Vector3 coord = new Vector3((int)transform.position[0], ((int)transform.position[1]) + 0.5f, (int)transform.position[2]);
-			Instantiate(cube, coord, new Quaternion(0, 0, 0, 0));
+		if(Input.GetKeyDown(KeyCode.P)) {
+			// create a new cube when press "P" 
+			Vector3 coord = new Vector3((int)player.transform.position[0],((int)player.transform.position[1])+0.5f, (int)player.transform.position[2]);
+			Instantiate (cube, coord, new Quaternion(0,0,0,0));
+		} else if( Input.GetKeyDown(KeyCode.O) && selectedCube.CompareTag("Cube") ){
+			// delete the cube when press "O" 
+			selectedCube.SetActive (false);
 		}
 
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.CompareTag("Bucket")){
-			// collect the material
-			GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
-		}
-		else if (other.gameObject.CompareTag("Cube")){
-			// assign the material to a cube
-			other.gameObject.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
-		}
-
-	}
 }

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float speed; // speed of player movement
 	public GameObject cube;
+	public GameObject selectedCube;
 
 	private Rigidbody playerObj; // player
 
@@ -24,20 +25,16 @@ public class PlayerController : MonoBehaviour {
 
 		playerObj.AddForce (movement * speed);
 
-		// create a new cube with "P" pressed
-		if(Input.GetKeyDown(KeyCode.P)) {
-			Vector3 coord = new Vector3((int)transform.position[0],((int)transform.position[1])+0.5f, (int)transform.position[2]);
-			Instantiate (cube, coord, new Quaternion(0,0,0,0));
-		}
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.CompareTag ("Bucket")) {
-			GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
-		} 
-		else if (other.gameObject.CompareTag ("Cube")) {
-			other.gameObject.GetComponent<Renderer> ().material = GetComponent<Renderer> ().material;
-		} 
 
+		selectedCube = other.gameObject;
+		if (selectedCube.CompareTag ("Bucket")) {
+			GetComponent<Renderer>().material = selectedCube.GetComponent<Renderer>().material;
+		} 
+		else if (selectedCube.CompareTag ("Cube")) {
+			selectedCube.GetComponent<Renderer> ().material = GetComponent<Renderer> ().material;
+		} 
 	}
 }
