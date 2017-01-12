@@ -60,6 +60,7 @@
      <Compile Include="Assets\KinectStuff\KinectScripts\MultiSourceManager.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\KinectPlayerController.cs" />
+     <Compile Include="Assets\Scripts\KinectRemoteControlController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\RemoteControlController.cs" />
  <Reference Include="UnityEngine.UI">
