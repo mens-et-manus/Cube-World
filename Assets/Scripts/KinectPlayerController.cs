@@ -4,51 +4,29 @@ using UnityEngine.UI;
 
 public class KinectPlayerController : MonoBehaviour
 {
-
-
-    public float speed;
-
-    public Transform brickPrefab;
-    public GameObject cube;
-
     private Rigidbody rb;
-    private int count;
-    public FollowJoint followJoint;
-
+    private FollowJoint followJoint; // Kinect Script
     
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody>();
-        count = 0;
+		// get Kinect scripts
         followJoint = GetComponent<FollowJoint>();
     }
 
-    void FixedUpdate()
-    {
-        // before phy calculation
-        
+	void FixedUpdate() {
+		// read position from Right hand
         transform.position = followJoint.ReadPosition;
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Vector3 coord = new Vector3((int)transform.position[0], ((int)transform.position[1]) + 0.5f, (int)transform.position[2]);
-            Instantiate(cube, coord, new Quaternion(0, 0, 0, 0));
-        }
-        
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Bucket"))
-        {
+    void OnTriggerEnter(Collider other) {
+		
+        if (other.gameObject.CompareTag("Bucket")){
+			// collect the material
             GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
         }
-        else if (other.gameObject.CompareTag("Cube"))
-        {
+        else if (other.gameObject.CompareTag("Cube")){
+			// assign the material to a cube
             other.gameObject.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
-            //			if(Input.GetKeyDown(KeyCode.O))
-            //			{
-            //				Instantiate (cube, transform.position, new Quaternion(0,0,0,0));
-            //			}
         }
 
     }
