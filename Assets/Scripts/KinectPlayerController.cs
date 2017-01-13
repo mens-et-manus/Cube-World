@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class KinectPlayerController : MonoBehaviour
 {
-    private FollowJoint followJoint; // Kinect Script
+	private FollowJoint followJoint; // Kinect Script
+	public GameObject selectedCube;
     
     void Start() {
 		// get Kinect scripts
@@ -17,7 +18,8 @@ public class KinectPlayerController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-		
+
+		selectedCube = other.gameObject;
         if (other.gameObject.CompareTag("Bucket")){
 			// collect the material
             GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
@@ -28,4 +30,8 @@ public class KinectPlayerController : MonoBehaviour
         }
 
     }
+
+	void OnTriggerExit(Collider other){
+		selectedCube = null;
+	}
 }
