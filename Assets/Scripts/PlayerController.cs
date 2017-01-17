@@ -9,21 +9,26 @@ public class PlayerController : MonoBehaviour {
 	public GameObject selectedCube;
 
 	private Rigidbody playerObj; // player
+	private float zPos; // current Z Position of the player
+	private float zOffset; // offset to move Z position when pressing arrow
 
 	void Start() {
 		playerObj = GetComponent<Rigidbody> ();
+		zOffset = 1.0f;
+		zPos = 0.0f;
 	}
 
 	void FixedUpdate() {
 
-		// movement from Keyboard arrows and Mouse Y axis
-		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis("Vertical");
-		float moveY = Input.GetAxis("Mouse Y");
+		// Use Keyboard arrow to control Z position
+		if(Input.GetKeyDown(KeyCode.DownArrow)) {
+			zPos -= zOffset;
+		} else if(Input.GetKeyDown(KeyCode.UpArrow)) {
+			zPos += zOffset;
+		}
 
-		Vector3 movement = new Vector3 (moveHorizontal, moveY/5, moveVertical);
-
-		playerObj.AddForce (movement * speed);
+		// Use mouse to control X,Y position
+		playerObj.transform.position = new Vector3 (Input.mousePosition[0]/100, Input.mousePosition[1]/100, zPos);
 
 	}
 
